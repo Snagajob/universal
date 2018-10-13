@@ -1,4 +1,3 @@
-
 import { ServerModule } from '@angular/platform-server';
 import { NgModule, Component, Inject, InjectionToken } from '@angular/core';
 import 'zone.js';
@@ -33,7 +32,7 @@ async function sendAndRecieve(renderOptions: SocketEngineRenderOptions, template
       client.write(JSON.stringify(renderOptions));
     });
 
-    client.on('data', data => {
+    client.on('data', (data: Buffer) => {
       const res = JSON.parse(data.toString()) as SocketEngineResponse;
       server.close();
       resolve(res);
@@ -73,7 +72,7 @@ describe('test runner', () => {
       client.write(JSON.stringify(renderOptions));
     });
 
-    client.on('data', data => {
+    client.on('data', (data: Buffer) => {
       const res = JSON.parse(data.toString()) as SocketEngineResponse;
       server.close();
       expect(res.error).not.toBeNull();
@@ -105,7 +104,7 @@ describe('test runner', () => {
       client.write(JSON.stringify(renderOptions));
     });
 
-    client.on('data', data => {
+    client.on('data', (data: Buffer) => {
       const res = JSON.parse(data.toString()) as SocketEngineResponse;
       server.close();
       expect(res.html).toContain(someValue.message);
