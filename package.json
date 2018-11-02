@@ -54,7 +54,7 @@
     "engine-strict": true
   },
   "engines": {
-    "node": ">= 8.9.x"
+    "node": ">= 8.12.x"
   },
   "scripts": {
     "lint": "tslint -c tslint.json '+(modules|tools)/**/*.ts' --exclude '**/node_modules/**/*'",
